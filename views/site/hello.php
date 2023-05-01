@@ -1,7 +1,12 @@
 <?php
 /* @var $this yii\web\View */
 use yii\helpers\Html;
-
+$this->registerJSFile('@web/js/hello.js',
+[
+'depends'=>'yii\web\YiiAsset',
+'position'=>$this::POS_HEAD
+]
+);
 $this->title = 'Hello';
 ?>
 <div class="site-hello">
