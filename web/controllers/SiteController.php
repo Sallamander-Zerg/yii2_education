@@ -241,6 +241,7 @@ HTML;
             // выполняем редирект, чтобы избежать повторной отправки формы
             return $this->refresh();
         }
+        $this->layout = 'feedback';
         return $this->render('feedback', ['model' => $model]);
     }
 
