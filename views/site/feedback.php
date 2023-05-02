@@ -86,18 +86,15 @@ if (Yii::$app->session->hasFlash('feedback-data')) {
     <?php $form = ActiveForm::begin(['id' => 'feedback', 'class' => 'form-horizontal']); ?>
         <?= $form->field($model, 'name')
         ->textInput(['placeholder' => 'Ваше имя и фамилия'])
-        ->hint('Ваше имя и фамилия')
-        ->label('Имя, Фамилия');
+        ->hint('Ваше имя и фамилия');
         ?>
         <?= $form->field($model, 'email')
         ->input('email', ['placeholder' => 'Ваш адрес почты'])
-        ->hint('Ваш адрес почты')
-        ->label('Адрес почты');
+        ->hint('Ваш адрес почты');
         ?>
         <?= $form->field($model, 'body')
         ->textarea(['rows' => 5, 'placeholder' => 'Введите ваше сообщение'])
-        ->hint('Введите ваше сообщение')
-        ->label('Ваше сообщение');
+        ->hint('Введите ваше сообщение');
         ?>
        <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary']); ?>
     <?php ActiveForm::end(); ?>
