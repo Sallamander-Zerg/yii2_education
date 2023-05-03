@@ -9,7 +9,7 @@ class CatalogController extends Controller {
     public function actionIndex() {
         // получаем корневые категории
         $categories = Category::find()->where(['parent_id' => 0])->all();
-        return $this->render('catalog', ['categories' => $categories]);
+        return $this->render('index', ['categories' => $categories]);
     }
 
     public function actionCategory() {
