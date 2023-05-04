@@ -1,9 +1,9 @@
 <?php
 namespace app\models;
 
-use yii\base\Model;
+use yii\db\ActiveRecord;
 
-class Feedback extends Model {
+class Feedback extends ActiveRecord {
 
     public $name;
     public $email;
