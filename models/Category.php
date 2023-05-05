@@ -1,27 +1,53 @@
 <?php
-/*
- * Файл models/Category.php
- */
-namespace app\models;
-use yii\db\ActiveRecord;
 
-class Category extends ActiveRecord {
-    public static function tableName() 
+namespace app\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "category".
+ *
+ * @property int $id Первичный ключ
+ * @property int $parent_id Родительская категория
+ * @property string $name Название категории
+ * @property int $sortorder Порядок сортировки
+ */
+class Category extends \yii\db\ActiveRecord
+{
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
     {
         return 'category';
     }
-    public function getProducts() {
-        // связь таблицы БД `category` с таблицей `product`
-        return $this->hasMany(Product::className(), ['category_id' => 'id']);
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['parent_id', 'sortorder'], 'integer'],
+            [['name'], 'required'],
+            [['name'], 'string', 'max' => 100],
+        ];
     }
 
-    public function getParent() {
-        // связь таблицы БД `category` с таблицей `category`
-        return $this->hasOne(self::className(), ['id' => 'parent_id']);
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'parent_id' => 'Parent ID',
+            'name' => 'Name',
+            'sortorder' => 'Sortorder',
+        ];
     }
-    public function getChildren() {
-        // связь таблицы БД `category` с таблицей `category`
-        return $this->hasMany(self::className(), ['parent_id' => 'id']);
+    public function getProducts()
+    {
+        return $this->hasMany(Product::className(), ['category_id' => 'id']);
     }
 }
-?>
